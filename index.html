@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Simulador de Processos Sustentáveis</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simulador de Processos Sustentáveis</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
   <header>
@@ -25,69 +25,29 @@
       <!-- Cenário Antes -->
       <section class="cenario" id="cenario-antes">
         <h2>Cenário Antes</h2>
-        <form id="simulation-form-antes" class="simulation-form">
-          <label for="agua-antes">
-            Água
-            <span class="tooltip">?
-              <span class="tooltiptext">Quantidade total de água usada (0 a 1000).</span>
-            </span>
-          </label>
+        <form id="form-antes" class="simulation-form">
+          <label for="agua-antes">Água <span class="tooltip">?<span class="tooltiptext">Quantidade total de água usada (0-1000)</span></span></label>
           <input id="agua-antes" type="number" min="0" max="1000" value="142" required />
 
-          <label for="energia-antes">
-            Energia
-            <span class="tooltip">?
-              <span class="tooltiptext">Quantidade total de energia usada (0 a 1000).</span>
-            </span>
-          </label>
+          <label for="energia-antes">Energia <span class="tooltip">?<span class="tooltiptext">Quantidade total de energia usada (0-1000)</span></span></label>
           <input id="energia-antes" type="number" min="0" max="1000" value="166" required />
 
-          <label for="residuos-antes">
-            Materiais (Resíduos)
-            <span class="tooltip">?
-              <span class="tooltiptext">Quantidade total de resíduos gerados (0 a 1000).</span>
-            </span>
-          </label>
+          <label for="residuos-antes">Materiais (Resíduos) <span class="tooltip">?<span class="tooltiptext">Quantidade total de resíduos gerados (0-1000)</span></span></label>
           <input id="residuos-antes" type="number" min="0" max="1000" value="114" required />
 
-          <label for="intensidade-extracao-antes">
-            Intensidade de Extração
-            <span class="tooltip">?
-              <span class="tooltiptext">Percentual da intensidade de extração dos recursos naturais (0 a 10).</span>
-            </span>
-          </label>
-          <input id="intensidade-extracao-antes" type="number" min="0" max="10" value="4.6" step="0.1" required />
+          <label for="intensidade-extracao-antes">Intensidade de Extração <span class="tooltip">?<span class="tooltiptext">Percentual intensidade extração (0-10)</span></span></label>
+          <input id="intensidade-extracao-antes" type="number" min="0" max="10" step="0.1" value="4.6" required />
 
-          <label for="energia-renovavel-antes">
-            Energia Renovável (%)
-            <span class="tooltip">?
-              <span class="tooltiptext">Percentual da energia utilizada que é renovável (0 a 100).</span>
-            </span>
-          </label>
+          <label for="energia-renovavel-antes">Energia Renovável (%) <span class="tooltip">?<span class="tooltiptext">Percentual energia renovável (0-100)</span></span></label>
           <input id="energia-renovavel-antes" type="number" min="0" max="100" value="53" required />
 
-          <label for="distancia-antes">
-            Distância de Distribuição (km)
-            <span class="tooltip">?
-              <span class="tooltiptext">Distância percorrida na distribuição dos produtos.</span>
-            </span>
-          </label>
+          <label for="distancia-antes">Distância Distribuição (km) <span class="tooltip">?<span class="tooltiptext">Distância percorrida na distribuição</span></span></label>
           <input id="distancia-antes" type="number" min="0" max="1000" value="390" required />
 
-          <label for="durabilidade-antes">
-            Durabilidade (anos)
-            <span class="tooltip">?
-              <span class="tooltiptext">Tempo esperado de uso do produto.</span>
-            </span>
-          </label>
+          <label for="durabilidade-antes">Durabilidade (anos) <span class="tooltip">?<span class="tooltiptext">Tempo esperado de uso</span></span></label>
           <input id="durabilidade-antes" type="number" min="0" max="100" value="8" required />
 
-          <label for="taxa-reciclagem-antes">
-            Taxa de Reciclagem (%)
-            <span class="tooltip">?
-              <span class="tooltiptext">Percentual de material que pode ser reciclado.</span>
-            </span>
-          </label>
+          <label for="taxa-reciclagem-antes">Taxa de Reciclagem (%) <span class="tooltip">?<span class="tooltiptext">Percentual material reciclado</span></span></label>
           <input id="taxa-reciclagem-antes" type="number" min="0" max="100" value="70" required />
 
           <button type="submit">Simular</button>
@@ -108,8 +68,7 @@
       <!-- Cenário Depois -->
       <section class="cenario" id="cenario-depois">
         <h2>Cenário Depois</h2>
-        <form id="simulation-form-depois" class="simulation-form">
-          <!-- MESMOS INPUTS DO CENÁRIO ANTES, só trocar os ids -->
+        <form id="form-depois" class="simulation-form">
           <label for="agua-depois">Água</label>
           <input id="agua-depois" type="number" min="0" max="1000" value="100" required />
 
@@ -120,12 +79,12 @@
           <input id="residuos-depois" type="number" min="0" max="1000" value="90" required />
 
           <label for="intensidade-extracao-depois">Intensidade de Extração</label>
-          <input id="intensidade-extracao-depois" type="number" min="0" max="10" value="3" step="0.1" required />
+          <input id="intensidade-extracao-depois" type="number" min="0" max="10" step="0.1" value="3" required />
 
           <label for="energia-renovavel-depois">Energia Renovável (%)</label>
           <input id="energia-renovavel-depois" type="number" min="0" max="100" value="75" required />
 
-          <label for="distancia-depois">Distância de Distribuição (km)</label>
+          <label for="distancia-depois">Distância Distribuição (km)</label>
           <input id="distancia-depois" type="number" min="0" max="1000" value="150" required />
 
           <label for="durabilidade-depois">Durabilidade (anos)</label>
