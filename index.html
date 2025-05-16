@@ -1,118 +1,157 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simulador de Processos Sustentáveis</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
   <header>
     <h1>Simulador de Processos Sustentáveis</h1>
-    <p>Explore cenários e veja como suas decisões afetam a sustentabilidade.</p>
+    <button id="dark-mode-toggle">Modo Noturno</button>
   </header>
 
+  <section id="progress-bar">
+    <div class="step active">Input</div>
+    <div class="step">Cálculo</div>
+    <div class="step">Resultado</div>
+  </section>
+
   <main>
-    <section class="form-section">
-      <h2>Configurações do Processo</h2>
-      <form id="simulation-form">
-        <h3>Parâmetros Gerais</h3>
-        <label for="energia">Uso de energia (kWh):</label>
-        <input type="number" id="energia" name="energia" required>
+    <div class="comparativo">
+      <!-- Cenário Antes -->
+      <section class="cenario" id="cenario-antes">
+        <h2>Cenário Antes</h2>
+        <form id="simulation-form-antes" class="simulation-form">
+          <label for="agua-antes">
+            Água
+            <span class="tooltip">?
+              <span class="tooltiptext">Quantidade total de água usada (0 a 1000).</span>
+            </span>
+          </label>
+          <input id="agua-antes" type="number" min="0" max="1000" value="142" required />
 
-        <label for="agua">Consumo de água (litros):</label>
-        <input type="number" id="agua" name="agua" required>
+          <label for="energia-antes">
+            Energia
+            <span class="tooltip">?
+              <span class="tooltiptext">Quantidade total de energia usada (0 a 1000).</span>
+            </span>
+          </label>
+          <input id="energia-antes" type="number" min="0" max="1000" value="166" required />
 
-        <label for="residuos">Resíduos gerados (kg):</label>
-        <input type="number" id="residuos" name="residuos" required>
+          <label for="residuos-antes">
+            Materiais (Resíduos)
+            <span class="tooltip">?
+              <span class="tooltiptext">Quantidade total de resíduos gerados (0 a 1000).</span>
+            </span>
+          </label>
+          <input id="residuos-antes" type="number" min="0" max="1000" value="114" required />
 
-        <label for="gastos">Gastos (R$):</label>
-        <input type="number" id="gastos" name="gastos" required>
+          <label for="intensidade-extracao-antes">
+            Intensidade de Extração
+            <span class="tooltip">?
+              <span class="tooltiptext">Percentual da intensidade de extração dos recursos naturais (0 a 10).</span>
+            </span>
+          </label>
+          <input id="intensidade-extracao-antes" type="number" min="0" max="10" value="4.6" step="0.1" required />
 
-        <label for="carbono">Emissões de carbono (kg CO₂):</label>
-        <input type="number" id="carbono" name="carbono" required>
+          <label for="energia-renovavel-antes">
+            Energia Renovável (%)
+            <span class="tooltip">?
+              <span class="tooltiptext">Percentual da energia utilizada que é renovável (0 a 100).</span>
+            </span>
+          </label>
+          <input id="energia-renovavel-antes" type="number" min="0" max="100" value="53" required />
 
-        <h3>Parâmetros por Etapa</h3>
-        <label for="intensidade-extracao">Intensidade de Extração (1-10):</label>
-        <input type="number" id="intensidade-extracao" name="intensidade-extracao" min="1" max="10" required>
+          <label for="distancia-antes">
+            Distância de Distribuição (km)
+            <span class="tooltip">?
+              <span class="tooltiptext">Distância percorrida na distribuição dos produtos.</span>
+            </span>
+          </label>
+          <input id="distancia-antes" type="number" min="0" max="1000" value="390" required />
 
-        <label for="intensidade-producao">Intensidade de Produção (1-10):</label>
-        <input type="number" id="intensidade-producao" name="intensidade-producao" min="1" max="10" required>
+          <label for="durabilidade-antes">
+            Durabilidade (anos)
+            <span class="tooltip">?
+              <span class="tooltiptext">Tempo esperado de uso do produto.</span>
+            </span>
+          </label>
+          <input id="durabilidade-antes" type="number" min="0" max="100" value="8" required />
 
-        <label for="energia-renovavel">Energia Renovável (%):</label>
-        <input type="number" id="energia-renovavel" name="energia-renovavel" min="0" max="100" required>
+          <label for="taxa-reciclagem-antes">
+            Taxa de Reciclagem (%)
+            <span class="tooltip">?
+              <span class="tooltiptext">Percentual de material que pode ser reciclado.</span>
+            </span>
+          </label>
+          <input id="taxa-reciclagem-antes" type="number" min="0" max="100" value="70" required />
 
-        <label for="nivel-otimizacao">Nível de Otimização (1-10):</label>
-        <input type="number" id="nivel-otimizacao" name="nivel-otimizacao" min="1" max="10" required>
+          <button type="submit">Simular</button>
+        </form>
 
-        <label for="distancia">Distância de Distribuição (km):</label>
-        <input type="number" id="distancia" name="distancia" required>
+        <div class="resultado" id="resultado-antes">
+          <h3>Resultado da Simulação</h3>
+          <ul id="recursos-lista-antes"></ul>
+          <canvas id="grafico-recursos-antes" width="400" height="200"></canvas>
+          <canvas id="grafico-sustentabilidade-antes" width="200" height="200"></canvas>
+          <section id="dicas-melhoria-antes">
+            <h4>Dicas de Melhoria Sustentável</h4>
+            <p id="dica-sustentavel-antes"></p>
+          </section>
+        </div>
+      </section>
 
-        <label for="durabilidade">Durabilidade de Uso (anos):</label>
-        <input type="number" id="durabilidade" name="durabilidade" required>
+      <!-- Cenário Depois -->
+      <section class="cenario" id="cenario-depois">
+        <h2>Cenário Depois</h2>
+        <form id="simulation-form-depois" class="simulation-form">
+          <!-- MESMOS INPUTS DO CENÁRIO ANTES, só trocar os ids -->
+          <label for="agua-depois">Água</label>
+          <input id="agua-depois" type="number" min="0" max="1000" value="100" required />
 
-        <label for="taxa-reciclagem">Taxa de Reciclagem (%):</label>
-        <input type="number" id="taxa-reciclagem" name="taxa-reciclagem" min="0" max="100" required>
+          <label for="energia-depois">Energia</label>
+          <input id="energia-depois" type="number" min="0" max="1000" value="100" required />
 
-        <button type="submit">Simular</button>
-      </form>
-    </section>
+          <label for="residuos-depois">Materiais (Resíduos)</label>
+          <input id="residuos-depois" type="number" min="0" max="1000" value="90" required />
 
-    <section class="resultado" id="resultado">
-      <h2>Resultado da Simulação</h2>
-      <div id="output"></div>
+          <label for="intensidade-extracao-depois">Intensidade de Extração</label>
+          <input id="intensidade-extracao-depois" type="number" min="0" max="10" value="3" step="0.1" required />
 
-      <div id="uso-recursos">
-        <h3>Uso de Recursos</h3>
-        <ul id="recursos-lista"></ul>
-      </div>
+          <label for="energia-renovavel-depois">Energia Renovável (%)</label>
+          <input id="energia-renovavel-depois" type="number" min="0" max="100" value="75" required />
 
-      <div id="fluxo-processo">
-        <h3>Fluxo do Processo</h3>
-<div class="fluxo">
-  <div>
-    <img src="https://img.icons8.com/ios-filled/50/oil-pump.png" alt="Extração">
-    <p><strong>Extração</strong><br><small>Intensidade: <span id="etapa-extracao"></span>%</small></p>
-  </div>
-  <div>
-    <img src="https://img.icons8.com/ios-filled/50/factory.png" alt="Fabricação">
-    <p><strong>Fabricação</strong><br><small>Renováveis: <span id="etapa-fabricacao"></span>%</small></p>
-  </div>
-  <div>
-    <img src="https://img.icons8.com/ios-filled/50/delivery.png" alt="Distribuição">
-    <p><strong>Distribuição</strong><br><small>Distância: <span id="etapa-distribuicao"></span> km</small></p>
-  </div>
-  <div>
-    <img src="https://img.icons8.com/ios-filled/50/maintenance.png" alt="Utilização">
-    <p><strong>Utilização</strong><br><small>Durabilidade: <span id="etapa-utilizacao"></span> anos</small></p>
-  </div>
-  <div>
-    <img src="https://img.icons8.com/ios-filled/50/recycle.png" alt="Reciclagem">
-    <p><strong>Reciclagem</strong><br><small>Taxa: <span id="etapa-reciclagem"></span>%</small></p>
-  </div>
-</div>
+          <label for="distancia-depois">Distância de Distribuição (km)</label>
+          <input id="distancia-depois" type="number" min="0" max="1000" value="150" required />
 
-      </div>
-    </section>
-    <section id="dicas-melhoria" style="margin-top: 20px;">
-  <h3>Dicas de Melhoria Sustentável</h3>
-  <p id="dica-sustentavel" style="font-style: italic; color: green;"></p>
-</section>
+          <label for="durabilidade-depois">Durabilidade (anos)</label>
+          <input id="durabilidade-depois" type="number" min="0" max="100" value="15" required />
 
-    <label for="intensidade-extracao">
-  Intensidade de Extração
-  <span class="tooltip">?
-    <span class="tooltiptext">Percentual da intensidade de extração dos recursos naturais.</span>
-  </span>
-</label>
-<input id="intensidade-extracao" type="number" min="0" max="10" value="3" />
+          <label for="taxa-reciclagem-depois">Taxa de Reciclagem (%)</label>
+          <input id="taxa-reciclagem-depois" type="number" min="0" max="100" value="85" required />
 
+          <button type="submit">Simular</button>
+        </form>
+
+        <div class="resultado" id="resultado-depois">
+          <h3>Resultado da Simulação</h3>
+          <ul id="recursos-lista-depois"></ul>
+          <canvas id="grafico-recursos-depois" width="400" height="200"></canvas>
+          <canvas id="grafico-sustentabilidade-depois" width="200" height="200"></canvas>
+          <section id="dicas-melhoria-depois">
+            <h4>Dicas de Melhoria Sustentável</h4>
+            <p id="dica-sustentavel-depois"></p>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <button id="exportar-pdf">Exportar Relatório PDF</button>
   </main>
-<button id="dark-mode-toggle">Modo Noturno</button>
-
-  <footer>
-    <p>&copy; 2025 Simulador de Processos Sustentáveis</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
