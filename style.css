@@ -65,3 +65,36 @@ footer {
   padding: 1rem;
   background-color: #c8e6c9;
 }
+
+.resultado-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+#uso-recursos,
+#fluxo-processo {
+  flex: 1 1 45%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.fluxo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.fluxo div {
+  text-align: center;
+  width: 100px;
+}
+
+.fluxo img {
+  width: 50px;
+  height: 50px;
+}
