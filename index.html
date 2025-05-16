@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Processos Sustentáveis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Simulador de Processos Sustentáveis</h1>
+    <p>Explore cenários e veja como suas decisões afetam a sustentabilidade.</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Configurações do Processo</h2>
+      <form id="simulation-form">
+        <label for="energia">Uso de energia (kWh):</label>
+        <input type="number" id="energia" name="energia" required>
+
+        <label for="agua">Consumo de água (litros):</label>
+        <input type="number" id="agua" name="agua" required>
+
+        <label for="residuos">Resíduos gerados (kg):</label>
+        <input type="number" id="residuos" name="residuos" required>
+
+        <button type="submit">Simular</button>
+      </form>
+    </section>
+
+    <section class="resultado" id="resultado">
+      <h2>Resultado da Simulação</h2>
+      <div id="output"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Simulador de Processos Sustentáveis</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
