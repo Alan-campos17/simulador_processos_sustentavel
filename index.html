@@ -16,6 +16,7 @@
     <section class="form-section">
       <h2>Configurações do Processo</h2>
       <form id="simulation-form">
+        <h3>Parâmetros Gerais</h3>
         <label for="energia">Uso de energia (kWh):</label>
         <input type="number" id="energia" name="energia" required>
 
@@ -24,6 +25,34 @@
 
         <label for="residuos">Resíduos gerados (kg):</label>
         <input type="number" id="residuos" name="residuos" required>
+
+        <label for="gastos">Gastos (R$):</label>
+        <input type="number" id="gastos" name="gastos" required>
+
+        <label for="carbono">Emissões de carbono (kg CO₂):</label>
+        <input type="number" id="carbono" name="carbono" required>
+
+        <h3>Parâmetros por Etapa</h3>
+        <label for="intensidade-extracao">Intensidade de Extração (1-10):</label>
+        <input type="number" id="intensidade-extracao" name="intensidade-extracao" min="1" max="10" required>
+
+        <label for="intensidade-producao">Intensidade de Produção (1-10):</label>
+        <input type="number" id="intensidade-producao" name="intensidade-producao" min="1" max="10" required>
+
+        <label for="energia-renovavel">Energia Renovável (%):</label>
+        <input type="number" id="energia-renovavel" name="energia-renovavel" min="0" max="100" required>
+
+        <label for="nivel-otimizacao">Nível de Otimização (1-10):</label>
+        <input type="number" id="nivel-otimizacao" name="nivel-otimizacao" min="1" max="10" required>
+
+        <label for="distancia">Distância de Distribuição (km):</label>
+        <input type="number" id="distancia" name="distancia" required>
+
+        <label for="durabilidade">Durabilidade de Uso (anos):</label>
+        <input type="number" id="durabilidade" name="durabilidade" required>
+
+        <label for="taxa-reciclagem">Taxa de Reciclagem (%):</label>
+        <input type="number" id="taxa-reciclagem" name="taxa-reciclagem" min="0" max="100" required>
 
         <button type="submit">Simular</button>
       </form>
