@@ -99,3 +99,6 @@ function gerarDicaMelhoria(score) {
   return "Alerta: reveja seus processos para torná-los mais sustentáveis.";
 }
 
+document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
