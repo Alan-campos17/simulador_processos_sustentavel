@@ -51,15 +51,19 @@ document.getElementById('simulation-form').addEventListener('submit', function (
   document.getElementById('etapa-distribuicao').textContent = distribuicao;
   document.getElementById('etapa-utilizacao').textContent = utilizacao;
   document.getElementById('etapa-reciclagem').textContent = reciclavel;
-
+ 
   // Animações
-  document.querySelectorAll('.fluxo div').forEach((div, index) => {
-    div.style.opacity = 0;
-    div.style.transform = 'translateY(20px)';
-    setTimeout(() => {
-      div.style.transition = 'all 0.6s ease';
-      div.style.opacity = 1;
-      div.style.transform = 'translateY(0)';
-    }, 100 * index);
-  });
+  const fluxoItems = document.querySelectorAll('.fluxo div');
+fluxoItems.forEach((div, index) => {
+  div.style.opacity = '0';
+  div.style.transform = 'translateY(20px)';
+});
+
+fluxoItems.forEach((div, index) => {
+  setTimeout(() => {
+    div.style.transition = 'all 0.6s ease';
+    div.style.opacity = '1';
+    div.style.transform = 'translateY(0)';
+  }, 100 * index);
+});
 });
