@@ -72,4 +72,30 @@ document.getElementById('simulation-form').addEventListener('submit', function (
       div.style.transform = 'translateY(0)';
     }, 100 * index);
   });
+
+  // Pontuação de Sustentabilidade
+  const score = calcularPontuacaoSustentabilidade(energia, agua, residuos, gastos, carbono, fabricacao, reciclavel);
+  document.getElementById('pontuacao').textContent = `Pontuação de Sustentabilidade: ${score}/100`;
+
+  // Dica de melhoria
+  const dica = gerarDicaMelhoria(score);
+  document.getElementById('dica-sustentavel').textContent = dica;
 });
+
+function calcularPontuacaoSustentabilidade(energia, agua, residuos, gastos, carbono, renovavel, reciclagem) {
+  let score = 100;
+  score -= (energia + agua + residuos) * 0.05;
+  score -= gastos * 0.03;
+  score -= carbono * 0.04;
+  score += renovavel * 0.2;
+  score += reciclagem * 0.2;
+  return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+function gerarDicaMelhoria(score) {
+  if (score >= 80) return "Excelente! Continue assim.";
+  if (score >= 60) return "Muito bom! Tente aumentar o uso de energia renovável.";
+  if (score >= 40) return "Considere reduzir os resíduos e melhorar a reciclagem.";
+  return "Alerta: reveja seus processos para torná-los mais sustentáveis.";
+}
+
