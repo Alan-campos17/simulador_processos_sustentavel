@@ -84,17 +84,24 @@ footer {
 
 .fluxo {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .fluxo div {
   text-align: center;
-  width: 100px;
+  flex: 1 1 18%;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
 .fluxo img {
   width: 50px;
   height: 50px;
+  margin-bottom: 8px;
 }
