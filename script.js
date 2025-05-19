@@ -58,6 +58,24 @@ document.getElementById('simulation-form').addEventListener('submit', function (
   document.getElementById('etapa-utilizacao').textContent = utilizacao;
   document.getElementById('etapa-reciclagem').textContent = reciclavel;
 
+// Calcular emissões de carbono
+  const emissoesCarbono = 
+    (extracao * 20) +
+    (producao * 15) +
+    ((100 - renovavel) * 1.5) +
+    ((10 - otimizacao) * 10) +
+    (distancia * 0.05) +
+    ((50 - durabilidade) * 1.2) +
+    ((100 - reciclavel) * 0.8);
+
+  const emissaoTexto = document.getElementById('resultado-carbono');
+  let classificacao = '';
+  if (emissoesCarbono <= 300) classificacao = '🟢 Baixa emissão (excelente)';
+  else if (emissoesCarbono <= 600) classificacao = '🟡 Média emissão (razoável)';
+  else classificacao = '🔴 Alta emissão (crítico)';
+
+  emissaoTexto.innerHTML = `<strong>Emissões de carbono:</strong> ${emissoesCarbono.toFixed(1)} kg CO₂<br>${classificacao}`;
+
   // Animações
   const fluxoItems = document.querySelectorAll('.fluxo div');
   fluxoItems.forEach((div, index) => {
