@@ -72,6 +72,21 @@ footer {
   gap: 40px;
   justify-content: space-between;
 }
+#uso-recursos ul {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+}
+
+#uso-recursos ul li {
+  flex: 1 1 30%;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 #uso-recursos,
 #fluxo-processo {
