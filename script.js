@@ -98,3 +98,21 @@ function gerarDicaMelhoria(score) {
   if (score >= 40) return "Considere reduzir os resíduos e melhorar a reciclagem.";
   return "Alerta: reveja seus processos para torná-los mais sustentáveis.";
 }
+
+
+const extracao = +document.getElementById('intensidade-extracao').value; // 1 a 10
+const producao = +document.getElementById('intensidade-producao').value;
+const renovavel = +document.getElementById('energia-renovavel').value; // %
+const otimizacao = +document.getElementById('nivel-otimizacao').value; // 1 a 10
+const distancia = +document.getElementById('distancia').value; // km
+const durabilidade = +document.getElementById('durabilidade').value; // anos
+const reciclagem = +document.getElementById('taxa-reciclagem').value; // %
+
+const emissoesCarbono = 
+  (extracao * 20) +
+  (producao * 15) +
+  ((100 - renovavel) * 1.5) +
+  ((10 - otimizacao) * 10) +
+  (distancia * 0.05) +
+  ((50 - durabilidade) * 1.2) +
+  ((100 - reciclagem) * 0.8);
