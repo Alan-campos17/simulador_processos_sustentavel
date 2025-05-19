@@ -1,147 +1,67 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
-  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8f5;
   color: #333;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-#dark-mode-toggle {
-  padding: 8px 12px;
-  background-color: #4caf50;
-  border: none;
+  background-color: #2e7d32;
   color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#progress-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.step {
-  flex: 1;
+  padding: 1.5rem;
   text-align: center;
-  padding: 10px;
-  background-color: #ddd;
-  color: #666;
-  border-radius: 6px;
-  margin: 0 5px;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.step.active {
-  background-color: #4caf50;
-  color: white;
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
 }
 
-.comparativo {
-  display: flex;
-  gap: 20px;
-}
-
-.cenario {
-  flex: 1;
-  background: white;
-  padding: 15px;
+.form-section {
+  background: #fff;
+  padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
 }
 
 label {
   display: block;
-  margin-top: 10px;
-  font-weight: bold;
+  margin: 1rem 0 0.5rem;
 }
 
 input {
   width: 100%;
-  padding: 6px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+  padding: 0.5rem;
   border-radius: 4px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
 }
 
-button[type="submit"], #exportar-pdf {
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #4caf50;
+button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #43a047;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  width: 100%;
-  font-size: 1em;
 }
 
-button[type="submit"]:hover, #exportar-pdf:hover {
-  background-color: #45a049;
+button:hover {
+  background-color: #388e3c;
 }
 
 .resultado {
-  margin-top: 20px;
+  background: #e8f5e9;
+  padding: 1rem;
+  border-left: 4px solid #2e7d32;
+  border-radius: 4px;
 }
 
-.tooltip {
-  position: relative;
-  cursor: help;
-  color: #007bff;
-  font-weight: bold;
-  margin-left: 5px;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #333;
-  color: #fff;
+footer {
   text-align: center;
-  border-radius: 8px;
-  padding: 8px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%; 
-  left: 50%;
-  margin-left: -100px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 0.9em;
+  padding: 1rem;
+  background-color: #c8e6c9;
 }
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Dark Mode */
-body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-body.dark-mode input {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-  border: 1px solid #555;
-}
-
-body.dark-mode button {
-  background-color: #333;
-  color: #e0e0e0;
-  border: none;
-}
-
-body.dark-mode .step {
-  background-color: #333;
-  color: #ddd;
-}
-
