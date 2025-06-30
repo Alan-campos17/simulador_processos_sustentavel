@@ -97,7 +97,7 @@ document.getElementById('simulation-form').addEventListener('submit', function (
 
 function carregarCenario(tipo) {
   const cenarios = {
-    sustentavel: {
+    serralheria: {
       extracao: 3,
       producao: 2,
       energiaRenovavel: 85,
@@ -111,7 +111,7 @@ function carregarCenario(tipo) {
       carbono: 60,
       gastos: 9000
     },
-    carvao: {
+    tapecaria: {
       extracao: 10,
       producao: 9,
       energiaRenovavel: 5,
@@ -125,7 +125,7 @@ function carregarCenario(tipo) {
       carbono: 1200,
       gastos: 12000
     },
-    desmatamento: {
+    agropecuaria: {
       extracao: 9,
       producao: 8,
       energiaRenovavel: 10,
