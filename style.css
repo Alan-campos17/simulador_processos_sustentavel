@@ -162,3 +162,39 @@ footer {
 .cenario-exemplos button:hover {
   background-color: #388e3c;
 }
+
+fieldset {
+  border: 2px solid #4caf50;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  background-color: #f9fff9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+fieldset legend {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #388e3c;
+}
+
+fieldset label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+fieldset input[type=number] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border 0.3s;
+}
+
+fieldset input[type=number]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
