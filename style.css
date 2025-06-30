@@ -134,3 +134,31 @@ footer {
   height: 60px;
   width: auto;
 }
+
+.cenario-exemplos {
+  background-color: #eef9f1;
+  border: 1px solid #c8e6c9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.cenario-exemplos h3 {
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.cenario-exemplos button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cenario-exemplos button:hover {
+  background-color: #388e3c;
+}
