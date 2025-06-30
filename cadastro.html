@@ -4,35 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cadastro - Simulador</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 400px; margin: 40px auto; }
-    label, input { display: block; width: 100%; margin-bottom: 10px; }
-    input[type="submit"] { width: auto; padding: 10px 20px; }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Cadastro</h1>
-  <form id="cadastro-form">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required />
+  <header>
+    <img src="img/logosus.png" alt="Logo" class="logo" />
+    <h1>Cadastro</h1>
+  </header>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required />
+  <main>
+    <section class="form-section">
+      <form id="form-cadastro">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required />
 
-    <button type="submit">Cadastrar</button>
-  </form>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required />
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Simulador de Processos Sustentáveis</p>
+  </footer>
 
   <script>
-    document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+    document.getElementById('form-cadastro').addEventListener('submit', function(e) {
       e.preventDefault();
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
 
-      if (nome && email) {
-        const usuario = { nome, email };
-        localStorage.setItem('usuarioCadastro', JSON.stringify(usuario));
-        alert('Cadastro realizado com sucesso! Você será redirecionado para o simulador.');
-        window.location.href = 'index.html';  // ou o nome do seu arquivo do simulador
+      const nome = this.nome.value.trim();
+      const email = this.email.value.trim();
+      const senha = this.senha.value.trim();
+
+      if (nome && email && senha) {
+        // Salvar dados no localStorage (opcional)
+        localStorage.setItem('usuarioCadastro', JSON.stringify({ nome, email }));
+
+        // Redirecionar para o site principal
+        window.location.href = 'index.html'; 
       } else {
         alert('Por favor, preencha todos os campos.');
       }
