@@ -20,28 +20,29 @@ document.getElementById('simulation-form').addEventListener('submit', function (
   recursosLista.innerHTML = '';
 
   const recursos = [
-    {
-      nome: 'Água',
-      total: agua,
-      reciclado: Math.round(agua * 0.89),
-      percentual: '89%',
-      utilizacao: '14%'
-    },
-    {
-      nome: 'Energia',
-      total: energia,
-      reciclado: Math.round(energia * 0.53),
-      percentual: '53%',
-      utilizacao: '17%'
-    },
-    {
-      nome: 'Materiais',
-      total: residuos,
-      reciclado: Math.round(residuos * 0.74),
-      percentual: '74%',
-      utilizacao: '11%'
-    }
-  ];
+  {
+    nome: 'Água',
+    total: agua,
+    reciclado: Math.round(agua * 0.89),
+    percentual: Math.round((agua * 0.89 / agua) * 100) + '%',
+    utilizacao: Math.round((agua / 1000) * 100) + '%'
+  },
+  {
+    nome: 'Energia',
+    total: energia,
+    reciclado: Math.round(energia * 0.53),
+    percentual: Math.round((energia * 0.53 / energia) * 100) + '%',
+    utilizacao: Math.round((energia / 1000) * 100) + '%'
+  },
+  {
+    nome: 'Materiais',
+    total: residuos,
+    reciclado: Math.round(residuos * 0.74),
+    percentual: Math.round((residuos * 0.74 / residuos) * 100) + '%',
+    utilizacao: Math.round((residuos / 1000) * 100) + '%'
+  }
+];
+
 
   recursos.forEach(recurso => {
     const li = document.createElement('li');
