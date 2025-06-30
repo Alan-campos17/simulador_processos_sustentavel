@@ -167,10 +167,10 @@ function carregarCenario(tipo) {
 document.addEventListener('DOMContentLoaded', () => {
   const usuario = localStorage.getItem('usuarioCadastro');
   if (!usuario) {
-    // Redireciona para cadastro se não estiver cadastrado
-    window.location.href = 'cadastro.html';
+    window.location.href = 'cadastro.html'; // força cadastro antes do site
   }
 });
+
 
 
 

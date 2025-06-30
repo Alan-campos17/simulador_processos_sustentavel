@@ -1,56 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cadastro - Simulador</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cadastro</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 2rem; }
+  .box { max-width: 400px; margin: auto; }
+  input, label { display: block; width: 100%; margin-bottom: 1rem; }
+  input[type="submit"] { width: auto; cursor: pointer; }
+</style>
 </head>
 <body>
-  <header>
-    <img src="img/logosus.png" alt="Logo" class="logo" />
-    <h1>Cadastro</h1>
-  </header>
+  <div class="box">
+    <form id="form-cadastro">
+      <label for="nome">Nome Completo:</label>
+      <input type="text" id="nome" name="nome" required />
 
-  <main>
-    <section class="form-section">
-      <form id="form-cadastro">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required />
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required />
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" required />
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required />
+      <input type="submit" value="Enviar" />
+    </form>
+  </div>
 
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
+<script>
+  document.getElementById('form-cadastro').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  <footer>
-    <p>&copy; 2025 Simulador de Processos Sustentáveis</p>
-  </footer>
+    const nome = this.nome.value.trim();
+    const email = this.email.value.trim();
+    const telefone = this.telefone.value.trim();
 
-  <script>
-    document.getElementById('form-cadastro').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const nome = this.nome.value.trim();
-      const email = this.email.value.trim();
-      const senha = this.senha.value.trim();
-
-      if (nome && email && senha) {
-        // Salvar dados no localStorage (opcional)
-        localStorage.setItem('usuarioCadastro', JSON.stringify({ nome, email }));
-
-        // Redirecionar para o site principal
-        window.location.href = 'index.html'; 
-      } else {
-        alert('Por favor, preencha todos os campos.');
-      }
-    });
-  </script>
+    if(nome && email && telefone){
+      localStorage.setItem('usuarioCadastro', JSON.stringify({ nome, email, telefone }));
+      alert('Cadastro realizado com sucesso!');
+      window.location.href = 'index.html'; // redireciona para simulador
+    } else {
+      alert('Preencha todos os campos.');
+    }
+  });
+</script>
 </body>
 </html>
