@@ -94,3 +94,66 @@ document.getElementById('simulation-form').addEventListener('submit', function (
   });
 });
 
+function carregarCenario(tipo) {
+  const cenarios = {
+    sustentavel: {
+      extracao: 3,
+      producao: 2,
+      energiaRenovavel: 85,
+      otimizacao: 9,
+      distancia: 120,
+      durabilidade: 12,
+      reciclavel: 80,
+      agua: 150,
+      energia: 140,
+      residuos: 100,
+      carbono: 60,
+      gastos: 9000
+    },
+    carvao: {
+      extracao: 10,
+      producao: 9,
+      energiaRenovavel: 5,
+      otimizacao: 2,
+      distancia: 800,
+      durabilidade: 4,
+      reciclavel: 10,
+      agua: 800,
+      energia: 950,
+      residuos: 700,
+      carbono: 1200,
+      gastos: 12000
+    },
+    desmatamento: {
+      extracao: 9,
+      producao: 8,
+      energiaRenovavel: 10,
+      otimizacao: 3,
+      distancia: 300,
+      durabilidade: 5,
+      reciclavel: 20,
+      agua: 600,
+      energia: 700,
+      residuos: 450,
+      carbono: 850,
+      gastos: 11000
+    }
+  };
+
+  const c = cenarios[tipo];
+
+  document.getElementById('intensidade-extracao').value = c.extracao;
+  document.getElementById('intensidade-producao').value = c.producao;
+  document.getElementById('energia-renovavel').value = c.energiaRenovavel;
+  document.getElementById('nivel-otimizacao').value = c.otimizacao;
+  document.getElementById('distancia').value = c.distancia;
+  document.getElementById('durabilidade').value = c.durabilidade;
+  document.getElementById('taxa-reciclagem').value = c.reciclavel;
+
+  document.getElementById('agua').value = c.agua;
+  document.getElementById('energia').value = c.energia;
+  document.getElementById('residuos').value = c.residuos;
+  document.getElementById('carbono').value = c.carbono;
+  document.getElementById('gastos').value = c.gastos;
+}
+
