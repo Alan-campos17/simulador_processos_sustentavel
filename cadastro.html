@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro - Simulador</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: 40px auto; }
+    label, input { display: block; width: 100%; margin-bottom: 10px; }
+    input[type="submit"] { width: auto; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>Cadastro</h1>
+  <form id="cadastro-form">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <script>
+    document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (nome && email) {
+        const usuario = { nome, email };
+        localStorage.setItem('usuarioCadastro', JSON.stringify(usuario));
+        alert('Cadastro realizado com sucesso! Você será redirecionado para o simulador.');
+        window.location.href = 'index.html';  // ou o nome do seu arquivo do simulador
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    });
+  </script>
+</body>
+</html>
