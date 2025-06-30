@@ -15,34 +15,58 @@ document.getElementById('simulation-form').addEventListener('submit', function (
   const durabilidade = +document.getElementById('durabilidade').value;
   const reciclavel = +document.getElementById('taxa-reciclagem').value;
 
+  // Calcular emissão de carbono no estilo Eco-Genius
+  const emissaoCarbono = (
+    extracao * 25 +
+    producao * 20 +
+    (100 - renovavel) * 2 +
+    (10 - otimizacao) * 12 +
+    distancia * 0.06 +
+    (50 - durabilidade) * 1.5 +
+    (100 - reciclavel) * 1
+  ).toFixed(2);
+
+  document.getElementById('emissao-total').textContent = emissaoCarbono + ' kg CO₂';
+
+  const classificacao = document.getElementById('classificacao-carbono');
+  if (emissaoCarbono <= 300) {
+    classificacao.textContent = '🟢 Eco-friendly';
+    classificacao.style.color = 'green';
+  } else if (emissaoCarbono <= 600) {
+    classificacao.textContent = '🟡 Moderado';
+    classificacao.style.color = 'orange';
+  } else {
+    classificacao.textContent = '🔴 Alto Impacto';
+    classificacao.style.color = 'red';
+  }
+
   // Preencher resultado de uso de recursos
   const recursosLista = document.getElementById('recursos-lista');
   recursosLista.innerHTML = '';
 
   const recursos = [
-  {
-    nome: 'Água',
-    total: agua,
-    reciclado: Math.round(agua * 0.89),
-    percentual: Math.round((agua * 0.89 / agua) * 100) + '%',
-    utilizacao: Math.round((agua / 1000) * 100) + '%'
-  },
-  {
-    nome: 'Energia',
-    total: energia,
-    reciclado: Math.round(energia * 0.53),
-    percentual: Math.round((energia * 0.53 / energia) * 100) + '%',
-    utilizacao: Math.round((energia / 1000) * 100) + '%'
-  },
-  {
-    nome: 'Materiais',
-    total: residuos,
-    reciclado: Math.round(residuos * 0.74),
-    percentual: Math.round((residuos * 0.74 / residuos) * 100) + '%',
-    utilizacao: Math.round((residuos / 1000) * 100) + '%'
-  }
-];
-
+    {
+      nome: 'Água',
+      total: agua,
+      reciclado: Math.round(agua * 0.89),
+      percentual: Math.round((agua * 0.89 / agua) * 100) + '%',
+      utilizacao: Math.round((agua / 1000) * 100) + '%'
+    },
+    {
+      nome: 'Energia',
+      total: energia,
+      reciclado: Math.round(energia * 0.53),
+      percentual: Math.round((energia * 0.53 / energia) * 100) + '%',
+      utilizacao: Math.round((energia / 1000) * 100) + '%'
+    },
+    {
+      nome: 'Materiais',
+      total: residuos,
+      reciclado: Math.round(residuos * 0.74),
+      percentual: Math.round((residuos * 0.74 / residuos) * 100) + '%',
+      utilizacao: Math.round((residuos / 1000) * 100) + '%'
+    }
+  ];
 
   recursos.forEach(recurso => {
     const li = document.createElement('li');
@@ -55,29 +79,11 @@ document.getElementById('simulation-form').addEventListener('submit', function (
   });
 
   // Preencher fluxo do processo
-  document.getElementById('etapa-extracao').textContent = extracao * 10;
+  document.getElementById('etapa-extracao').textContent = extracao;
   document.getElementById('etapa-fabricacao').textContent = renovavel;
   document.getElementById('etapa-distribuicao').textContent = distancia;
   document.getElementById('etapa-utilizacao').textContent = durabilidade;
   document.getElementById('etapa-reciclagem').textContent = reciclavel;
-
-  // Calcular emissões de carbono
-  const emissoesCarbono = 
-    (extracao * 20) +
-    (producao * 15) +
-    ((100 - renovavel) * 1.5) +
-    ((10 - otimizacao) * 10) +
-    (distancia * 0.05) +
-    ((50 - durabilidade) * 1.2) +
-    ((100 - reciclavel) * 0.8);
-
-  const emissaoTexto = document.getElementById('resultado-carbono');
-  let classificacao = '';
-  if (emissoesCarbono <= 300) classificacao = '🟢 Baixa emissão (excelente)';
-  else if (emissoesCarbono <= 600) classificacao = '🟡 Média emissão (razoável)';
-  else classificacao = '🔴 Alta emissão (crítico)';
-
-  emissaoTexto.innerHTML = `<strong>Emissões de carbono:</strong> ${emissoesCarbono.toFixed(1)} kg CO₂<br>${classificacao}`;
 
   // Animações
   const fluxoItems = document.querySelectorAll('.fluxo div');
