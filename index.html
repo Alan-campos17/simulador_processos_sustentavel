@@ -121,7 +121,15 @@
     <p>&copy; 2025 Simulador de Processos Sustentáveis</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js">
+    document.addEventListener('DOMContentLoaded', () => {
+  const usuario = localStorage.getItem('usuarioCadastro');
+  if (!usuario) {
+    // Redireciona para cadastro se não estiver cadastrado
+    window.location.href = 'cadastro.html';
+  }
+});
+  </script>
 
   
   
