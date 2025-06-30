@@ -164,12 +164,6 @@ function carregarCenario(tipo) {
   document.getElementById('gastos').value = c.gastos;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const usuario = localStorage.getItem('usuarioCadastro');
-  if (!usuario) {
-    window.location.href = 'cadastro.html'; // força cadastro antes do site
-  }
-});
 
 
 
