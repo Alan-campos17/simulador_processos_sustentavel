@@ -158,3 +158,34 @@ function carregarCenario(tipo) {
   document.getElementById('gastos').value = c.gastos;
 }
 
+// Espera o DOM carregar
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('modal-cadastro');
+  const formCadastro = document.getElementById('form-cadastro');
+
+  // Bloqueia scroll da página enquanto modal estiver aberto
+  document.body.style.overflow = 'hidden';
+
+  formCadastro.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Aqui você pode validar ou salvar os dados do cadastro
+    const nome = formCadastro.nome.value.trim();
+    const email = formCadastro.email.value.trim();
+    const senha = formCadastro.senha.value.trim();
+
+    if (nome && email && senha) {
+      // Exemplo: salvar no localStorage (pode ser substituído por envio real ao backend)
+      localStorage.setItem('usuarioCadastro', JSON.stringify({ nome, email }));
+
+      // Esconde o modal e libera acesso ao site
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+
+      alert('Cadastro realizado com sucesso! Agora você pode usar o simulador.');
+    } else {
+      alert('Por favor, preencha todos os campos corretamente.');
+    }
+  });
+});
+
