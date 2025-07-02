@@ -5,6 +5,27 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'cadastro.html';
   }
 });
+function carregarTemplateLeiteria() {
+  document.getElementById('energia').value = 850;
+  document.getElementById('agua').value = 2200;
+  document.getElementById('residuos').value = 480;
+  document.getElementById('gastos').value = 3200;
+  document.getElementById('carbono').value = 620;
+
+  document.getElementById('intensidade-extracao').value = 6;
+  document.getElementById('intensidade-producao').value = 7;
+  document.getElementById('energia-renovavel').value = 30;
+  document.getElementById('nivel-otimizacao').value = 5;
+  document.getElementById('distancia').value = 80;
+  document.getElementById('durabilidade').value = 5;
+  document.getElementById('taxa-reciclagem').value = 60;
+
+  document.getElementById('deslocamento-carro').value = 20;
+  document.getElementById('deslocamento-bus').value = 10;
+  document.getElementById('consumo-gas').value = 5;
+
+  alert('Template de Leiteria carregado com sucesso!');
+}
 document.getElementById('simulation-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
