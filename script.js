@@ -192,6 +192,71 @@ function carregarCenario(tipo) {
   document.getElementById('gastos').value = c.gastos;
 }
 
+function calcularCarbono() {
+  const tipo = document.getElementById('tipo-metrica').value;
+  const valor = parseFloat(document.getElementById('valor-carbono').value);
+  const resultadoDiv = document.getElementById('resultado-carbono');
+
+  if (!tipo || isNaN(valor) || valor <= 0) {
+    resultadoDiv.textContent = "Por favor, selecione a métrica e informe um valor válido.";
+    resultadoDiv.style.color = "red";
+    return;
+  }
+
+  let emissao = 0;
+
+  // Fatores médios de emissão (kg CO₂ por unidade)
+  switch (tipo) {
+    case 'energia':
+      emissao = valor * 0.084; // kWh
+      break;
+    case 'carro':
+      emissao = valor * 0.192; // km
+      break;
+    case 'onibus':
+      emissao = valor * 0.105; // km
+      break;
+    case 'gas':
+      emissao = valor * 2.2; // kg ou m³
+      break;
+    default:
+      emissao = 0;
+  }
+
+  emissao = emissao.toFixed(2);
+
+  resultadoDiv.textContent = `Sua pegada estimada é de ${emissao} kg de CO₂`;
+  resultadoDiv.style.color = "#2e7d32";
+}
+
+function selecionarTipo(tipo) {
+  const select = document.getElementById('tipo-metrica');
+  select.value = tipo;
+  atualizarPlaceholder();
+}
+
+function atualizarPlaceholder() {
+  const tipo = document.getElementById('tipo-metrica').value;
+  const input = document.getElementById('valor-carbono');
+
+  switch (tipo) {
+    case 'energia':
+      input.placeholder = "Digite o consumo em kWh";
+      break;
+    case 'carro':
+      input.placeholder = "Digite a distância em km";
+      break;
+    case 'onibus':
+      input.placeholder = "Digite a distância em km";
+      break;
+    case 'gas':
+      input.placeholder = "Digite o volume em m³";
+      break;
+    default:
+      input.placeholder = "Digite o valor";
+  }
+}
+
 
 
 
