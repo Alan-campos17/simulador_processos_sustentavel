@@ -108,23 +108,37 @@
           </div>
         </div>
   </div>
-<div class="resultado-carbono" style="margin-top: 20px; font-size: 1.2em;">
-  Emissão total: <strong id="emissao-total">0</strong>
-  <span id="classificacao-carbono" style="margin-left: 10px; font-weight: bold;"></span>
-  <fieldset>
-  <legend>🌍 Emissões de Carbono Adicionais</legend>
+<section class="card-carbono">
+  <h2>Calcule sua pegada de carbono!</h2>
 
-  <label for="deslocamento-carro">Deslocamento de Carro (km):</label>
-  <input type="number" id="deslocamento-carro" name="deslocamento-carro" min="0" placeholder="Ex: 30">
+  <div class="carbono-wrapper">
+    <div class="icones">
+      <button onclick="selecionarTipo('energia')">⚡</button>
+      <button onclick="selecionarTipo('carro')">🚗</button>
+      <button onclick="selecionarTipo('onibus')">🚌</button>
+      <button onclick="selecionarTipo('gas')">🔥</button>
+    </div>
 
-  <label for="deslocamento-bus">Deslocamento de Ônibus (km):</label>
-  <input type="number" id="deslocamento-bus" name="deslocamento-bus" min="0" placeholder="Ex: 50">
+    <div class="form-carbono">
+      <label for="tipo-metrica">Selecione a métrica:</label>
+      <select id="tipo-metrica" onchange="atualizarPlaceholder()">
+        <option value="">-- Selecione --</option>
+        <option value="energia">Energia (kWh)</option>
+        <option value="carro">Deslocamento de carro (km)</option>
+        <option value="onibus">Ônibus (km)</option>
+        <option value="gas">Consumo de gás</option>
+      </select>
 
-  <label for="consumo-gas">Consumo de Gás (unidades):</label>
-  <input type="number" id="consumo-gas" name="consumo-gas" min="0" placeholder="Ex: 10">
-</fieldset>
+      <label for="valor-carbono">Valor:</label>
+      <input type="number" id="valor-carbono" placeholder="Digite o valor" />
 
-</div>
+      <button onclick="calcularCarbono()">Calcular</button>
+
+      <div id="resultado-carbono"></div>
+    </div>
+  </div>
+</section>
+
 
       </div>
     </section>

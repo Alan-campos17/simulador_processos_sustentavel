@@ -192,6 +192,31 @@ function carregarCenario(tipo) {
   document.getElementById('gastos').value = c.gastos;
 }
 
+function calcularCarbono() {
+  const tipo = document.getElementById('tipo-metrica').value;
+  const valor = +document.getElementById('valor-carbono').value;
+  let resultado = 0;
+
+  switch (tipo) {
+    case 'energia':
+      resultado = valor * 0.082; // ex: 1 kWh = 0,082 kg CO2
+      break;
+    case 'carro':
+      resultado = valor * 0.2;
+      break;
+    case 'onibus':
+      resultado = valor * 0.1;
+      break;
+    case 'gas':
+      resultado = valor * 2.5;
+      break;
+    default:
+      resultado = 0;
+  }
+
+  document.getElementById('resultado-carbono').innerHTML =
+    `🌍 Emissão estimada: <strong>${resultado.toFixed(2)} kg CO₂</strong>`;
+}
 
 
 
