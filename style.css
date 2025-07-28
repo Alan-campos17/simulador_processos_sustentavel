@@ -215,7 +215,7 @@ fieldset input[type=number]:focus {
 }
 
 .icones button {
-  background: none;
+  background: green;
   font-size: 1.5rem;
   margin-right: 0.5rem;
   cursor: pointer;
