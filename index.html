@@ -71,39 +71,44 @@
       </form>
     </section>
 
-    <section class="resultado" id="resultado">
-      <h2>Resultado da Simulação</h2>
-      <div id="output"></div>
-        <p id="pontuacao"></p>
-<p id="dica-sustentavel" style="font-style: italic; color: green;"></p>
-      <div class="resultado-container">
-        <div id="uso-recursos">
-          <h3>Uso de Recursos</h3>
-          <ul id="recursos-lista"></ul>
-        </div>
+<section class="resultado" id="resultado">
+  <h2>Resultado da Simulação</h2>
+  <div id="output">
+    <p><strong>Emissão total de carbono:</strong> <span id="emissao-total">0 kg CO₂</span></p>
+    <p><strong>Classificação:</strong> <span id="classificacao-carbono">-</span></p>
+  </div>
+  
+  <div id="pontuacao"></div>
+  <p id="dica-sustentavel" style="font-style: italic; color: green;"></p>
+  
+  <div class="resultado-container">
+    <div id="uso-recursos">
+      <h3>Uso de Recursos</h3>
+      <ul id="recursos-lista"></ul>
+    </div>
 
-        <div id="fluxo-processo">
-          <h3>Fluxo do Processo</h3>
-          <div class="fluxo">
-            <div>
-              <img src="https://cdn-icons-png.flaticon.com/512/18899/18899752.png " alt="Extração">
-              <p>Extração<br><small>Intensidade: <span id="etapa-extracao"></span>%</small></p>
-            </div>
-            <div>
-              <img src="https://img.icons8.com/ios-filled/50/factory.png" alt="Fabricação">
-              <p>Fabricação<br><small>Renováveis: <span id="etapa-fabricacao"></span>%</small></p>
-            </div>
-            <div>
-              <img src="https://img.icons8.com/ios-filled/50/delivery.png" alt="Distribuição">
-              <p>Distribuição<br><small>Distância: <span id="etapa-distribuicao"></span> km</small></p>
-            </div>
-            <div>
-              <img src="https://img.icons8.com/ios-filled/50/maintenance.png" alt="Utilização">
-              <p>Utilização<br><small>Durabilidade: <span id="etapa-utilizacao"></span> anos</small></p>
-            </div>
-            <div>
-              <img src=" https://cdn-icons-png.flaticon.com/512/49/49793.png" alt="Reciclagem">
-              <p>Reciclagem<br><small>Taxa: <span id="etapa-reciclagem"></span>%</small></p>
+    <div id="fluxo-processo">
+      <h3>Fluxo do Processo</h3>
+      <div class="fluxo">
+        <div>
+          <img src="https://cdn-icons-png.flaticon.com/512/18899/18899752.png" alt="Extração">
+          <p>Extração<br><small>Intensidade: <span id="etapa-extracao">-</span>%</small></p>
+        </div>
+        <div>
+          <img src="https://img.icons8.com/ios-filled/50/factory.png" alt="Fabricação">
+          <p>Fabricação<br><small>Renováveis: <span id="etapa-fabricacao">-</span>%</small></p>
+        </div>
+        <div>
+          <img src="https://img.icons8.com/ios-filled/50/delivery.png" alt="Distribuição">
+          <p>Distribuição<br><small>Distância: <span id="etapa-distribuicao">-</span> km</small></p>
+        </div>
+        <div>
+          <img src="https://img.icons8.com/ios-filled/50/maintenance.png" alt="Utilização">
+          <p>Utilização<br><small>Durabilidade: <span id="etapa-utilizacao">-</span> anos</small></p>
+        </div>
+        <div>
+          <img src="https://cdn-icons-png.flaticon.com/512/49/49793.png" alt="Reciclagem">
+          <p>Reciclagem<br><small>Taxa: <span id="etapa-reciclagem">-</span>%</small></p>
             </div>
           </div>
         </div>
