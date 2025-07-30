@@ -211,7 +211,9 @@ button:hover {
 .form-carbono button:hover {
   background: #2e7d32;
 }
-
+.form-section{
+  text-align: center;
+}
 /* Footer */
 footer {
   text-align: center;
